@@ -18,50 +18,56 @@
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:contentDescription="@string/image_event_description"
+            android:scaleType="fitXY"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lbEventDay"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/white"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
+        <LinearLayout
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="16" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/container"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@mipmap/ic_date_background">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/lbEventMonth"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/white"
+            android:id="@+id/lbEventDay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="15sp"
-            app:cardCornerRadius="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/lbEventDay"
-            tools:text="Dez" />
+            android:textSize="28sp"
+            android:layout_marginTop="16dp"
+            tools:text="16" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/lbEventMonth"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginBottom="16dp"
+                tools:text="Dez" />
+        </LinearLayout>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbEventTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="32sp"
+            android:layout_marginEnd="16dp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ivEventImage"
-            tools:text="Title"/>
+            tools:text="Title" />
 
         <ImageView
             android:id="@+id/ivEventLocal"
@@ -71,9 +77,9 @@
             android:layout_marginBottom="16dp"
             android:contentDescription="Image Icon"
             android:src="@drawable/ic_baseline_place_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/lbEventTitle"
-            app:layout_constraintTop_toBottomOf="@id/lbEventTitle"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/lbEventTitle" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbEventLocal"
@@ -94,9 +100,9 @@
             android:layout_marginBottom="16dp"
             android:contentDescription="Clock Icon"
             android:src="@drawable/ic_baseline_access_time_24"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/lbEventTime"
-            app:layout_constraintTop_toTopOf="@id/ivEventLocal"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toTopOf="@id/ivEventLocal" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbEventTime"
@@ -107,8 +113,8 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/ivEventLocal"
-            tools:text="18:30"/>
+            tools:text="18:30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+</com.google.android.material.card.MaterialCardView>

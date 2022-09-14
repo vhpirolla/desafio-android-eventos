@@ -1,7 +1,7 @@
 package com.example.eventapp.data.remote
 
 data class EventsModel (
-    val people: String,
+    val people: List<String>,
     val date: String,
     val description: String,
     val image: String,

@@ -16,7 +16,7 @@ interface RetrofitService {
         fun getInstance(): RetrofitService {
             if (retrofitService == null) {
                 val retrofit = Retrofit.Builder()
-                    .baseUrl("http://5f5a8f24d44d640016169133.mockapi.io/api/")
+                    .baseUrl("https://5f5a8f24d44d640016169133.mockapi.io/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                 retrofitService = retrofit.create(RetrofitService::class.java)
