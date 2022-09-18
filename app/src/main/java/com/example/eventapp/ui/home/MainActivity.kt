@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         binding = ActivityMainBinding.inflate(layoutInflater)
 
+
         setContentView(binding.root)
         viewModel = ViewModelProvider(this, MyViewModelFactory(EventRepository(retrofitService))).get(MainViewModel::class.java)
 
@@ -40,3 +41,5 @@ class MainActivity : AppCompatActivity() {
         viewModel.getAllEvents()
     }
 }
+
+// TODO Progressbar / Loader on Retrofit Loading

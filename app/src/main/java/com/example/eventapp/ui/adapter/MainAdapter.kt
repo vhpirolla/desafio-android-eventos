@@ -1,14 +1,22 @@
 package com.example.eventapp.ui.adapter
 
+import android.content.ContentProvider
+import android.content.ContentValues
+import android.content.Context
+import android.content.Intent
 import android.location.Address
 import android.location.Geocoder
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.eventapp.data.remote.EventsModel
 import com.example.eventapp.databinding.EventItemBinding
+import com.example.eventapp.ui.description.DescriptionActivity
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,14 +36,24 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
+        val context: Context = holder.itemView.context
+
         val events = events[position]
         holder.binding.lbEventTitle.text = events.title
         holder.binding.lbEventDay.text = getDateDay(events.date)
         holder.binding.lbEventMonth.text = getDateMonth(events.date)
-        holder.binding.lbEventLocal.text = events.longitude
+        holder.binding.lbEventLocal.text = getAddress(holder.itemView.context,events.latitude, events.longitude)
         holder.binding.lbEventTime.text = getDateTime(events.date)
         Glide.with(holder.itemView.context).load(events.image).into(holder.binding.ivEventImage)
+
+        holder.itemView.setOnClickListener {
+            var intent = Intent(context, DescriptionActivity::class.java)
+            intent.putExtra(DescriptionActivity.Extras.EVENT, events)
+            context.startActivity(intent)
+        }
     }
+
+    // TODO Return Image when Blank on API
 
     override fun getItemCount(): Int {
         return events.size
@@ -49,7 +67,8 @@ class MainViewHolder(val binding: EventItemBinding) : RecyclerView.ViewHolder(bi
 fun getDateDay(s: String): String? {
     try {
         val sdf = SimpleDateFormat("dd")
-        val netDate = Date(s.toLong() * 1000)
+        sdf.timeZone = TimeZone.getDefault()
+        val netDate = Date(s.toLong())
         return sdf.format(netDate)
     } catch (e: Exception) {
         return e.toString()
@@ -59,7 +78,8 @@ fun getDateDay(s: String): String? {
 fun getDateMonth(s: String): String? {
     try {
         val sdf = SimpleDateFormat("MMM")
-        val netDate = Date(s.toLong() * 1000)
+        sdf.timeZone = TimeZone.getDefault()
+        val netDate = Date(s.toLong())
         return sdf.format(netDate)
     } catch (e: Exception) {
         return e.toString()
@@ -68,10 +88,20 @@ fun getDateMonth(s: String): String? {
 
 fun getDateTime(s: String): String? {
     try {
-        val sdf = SimpleDateFormat("HH:mm:ss")
-        val netDate = Date(s.toLong() * 1000)
+        val sdf = SimpleDateFormat("HH:mm")
+        sdf.timeZone = TimeZone.getDefault()
+        val netDate = Date(s.toLong())
         return sdf.format(netDate)
     } catch (e: Exception) {
         return e.toString()
     }
+}
+
+fun getAddress(context: Context,lat: String, long: String): String {
+    val cityName: String
+    val geoCoder = Geocoder(context, Locale.getDefault())
+    val Address = geoCoder.getFromLocation(lat.toDouble(),long.toDouble(),1)
+
+    cityName = Address[0].subAdminArea
+    return cityName
 }

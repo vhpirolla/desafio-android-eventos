@@ -1,5 +1,9 @@
 package com.example.eventapp.data.remote
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class EventsModel (
     val people: List<String>,
     val date: String,
@@ -10,4 +14,4 @@ data class EventsModel (
     val price: String,
     val title: String,
     val id: Int
-    )
+    ) : Parcelable
