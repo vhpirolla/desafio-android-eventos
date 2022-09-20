@@ -5,6 +5,7 @@
       <map>
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.290625" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_baseline_access_time_24.xml" value="0.290625" />
+        <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.21875" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.21875" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.21875" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_baseline_place_24.xml" value="0.21875" />
@@ -15,6 +16,7 @@
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_rounded_share.xml" value="0.21875" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/activity_description.xml" value="0.20260416666666667" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/event_description.xml" value="0.25" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/event_item.xml" value="0.25" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/fragment.xml" value="0.2546875" />

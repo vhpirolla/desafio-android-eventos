@@ -1,22 +1,16 @@
-package com.example.eventapp.ui.adapter
+package com.example.eventapp.ui.home.adapter
 
-import android.content.ContentProvider
-import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
-import android.location.Address
 import android.location.Geocoder
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.eventapp.R
 import com.example.eventapp.data.remote.EventsModel
 import com.example.eventapp.databinding.EventItemBinding
 import com.example.eventapp.ui.description.DescriptionActivity
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,7 +38,10 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
         holder.binding.lbEventMonth.text = getDateMonth(events.date)
         holder.binding.lbEventLocal.text = getAddress(holder.itemView.context,events.latitude, events.longitude)
         holder.binding.lbEventTime.text = getDateTime(events.date)
-        Glide.with(holder.itemView.context).load(events.image).into(holder.binding.ivEventImage)
+        Glide.with(holder.itemView.context)
+            .load(events.image)
+            .placeholder(R.mipmap.placeholder)
+            .into(holder.binding.ivEventImage)
 
         holder.itemView.setOnClickListener {
             var intent = Intent(context, DescriptionActivity::class.java)

@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/ivEventDescriptionImage"
         android:layout_width="0dp"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,9 +32,10 @@
         android:id="@+id/cvEventDescriptionText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="-16dp"
         android:background="#000000"
-        android:layout_marginTop="118dp"
-        app:cardCornerRadius="16dp"
+        android:layout_marginTop="168dp"
+        app:cardCornerRadius="32dp"
         tools:ignore="ExtraText">
 
         // TODO REVIEW THIS CONSTRAINT
@@ -56,6 +57,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="8dp"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 tools:text="Título" />

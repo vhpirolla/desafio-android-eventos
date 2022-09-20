@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.eventapp.R
 import com.example.eventapp.data.remote.EventsModel
 import com.example.eventapp.databinding.ActivityDescriptionBinding
-import com.example.eventapp.ui.adapter.getAddress
+import com.example.eventapp.ui.home.adapter.getAddress
 import java.io.File
 import java.io.FileOutputStream
 import java.text.SimpleDateFormat
@@ -45,7 +45,10 @@ class DescriptionActivity : AppCompatActivity() {
 
     private fun loadEventFromExtra() {
         intent?.extras?.getParcelable<EventsModel>(Extras.EVENT)?.let {
-            Glide.with(this).load(it.image).into(binding.ivEventDescriptionImage)
+            Glide.with(this)
+                .load(it.image)
+                .placeholder(R.mipmap.placeholder)
+                .into(binding.ivEventDescriptionImage)
             binding.lbEventDescriptionTitle.text = it.title
             binding.lbEventDescriptionAbout.text = it.description
             binding.lbEventDescriptionLocal.text = getAddress(this, it.latitude, it.longitude)

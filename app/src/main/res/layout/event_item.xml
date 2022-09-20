@@ -10,6 +10,7 @@
     app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ly_Constraint"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -22,7 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+            android:src="@mipmap/placeholder"/>
 
         <LinearLayout
             android:layout_width="70dp"
@@ -41,7 +42,7 @@
             android:layout_height="match_parent"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:layout_marginTop="16dp"
             tools:text="16" />
 
@@ -51,7 +52,7 @@
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:layout_marginBottom="16dp"
                 android:maxLength="3"
                 tools:text="Dez" />
@@ -59,20 +60,21 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbEventTitle"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
             android:textSize="22sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ly_Constraint"
             app:layout_constraintTop_toBottomOf="@id/ivEventImage"
-            tools:text="Title" />
+            app:layout_constraintEnd_toEndOf="@+id/lbEventTime"
+            android:justificationMode="inter_word"
+            tools:text="Title"/>
 
         <ImageView
             android:id="@+id/ivEventLocal"
-            android:layout_width="wrap_content"
+            android:layout_width="16dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
@@ -87,33 +89,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="16dp"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@id/ivEventLocal"
             app:layout_constraintTop_toTopOf="@id/ivEventLocal"
+            app:layout_constraintBottom_toBottomOf="@id/ivEventLocal"
             tools:text="Local" />
 
         <ImageView
             android:id="@+id/ivEventTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
             android:contentDescription="@string/clock_icon"
             android:src="@drawable/ic_baseline_access_time_24"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/lbEventTime"
-            app:layout_constraintTop_toTopOf="@id/ivEventLocal" />
+            app:layout_constraintTop_toTopOf="@id/ivEventLocal"
+            app:layout_constraintBottom_toBottomOf="@id/ivEventLocal"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbEventTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/ivEventLocal"
+            app:layout_constraintEnd_toEndOf="@id/container"
+            app:layout_constraintTop_toTopOf="@id/ivEventTime"
+            app:layout_constraintBottom_toBottomOf="@id/ivEventTime"
             tools:text="18:30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
