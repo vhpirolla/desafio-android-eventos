@@ -34,8 +34,11 @@ class MainActivity : AppCompatActivity() {
         binding.ivAccount.setOnClickListener{
             var userFirstRun = false
             editor.putBoolean("user_FirstRun", userFirstRun).apply()
+            editor.putString("user_Name", null).apply()
+            editor.putString("user_Email", null).apply()
             var intent = Intent(this, OnboardingActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         viewModel = ViewModelProvider(this, MyViewModelFactory(EventRepository(retrofitService))).get(MainViewModel::class.java)

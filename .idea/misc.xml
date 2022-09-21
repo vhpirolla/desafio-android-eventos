@@ -13,7 +13,9 @@
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_baseline_share_242.xml" value="0.290625" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_calendar_foreground.xml" value="0.290625" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_launcher_background.xml" value="0.290625" />
+        <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_onboarding_background.xml" value="0.2833333333333333" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/ic_rounded_share.xml" value="0.21875" />
+        <entry key="..\:/workspace/Desafio-South/app/src/main/res/drawable/rounded_edittext.xml" value="0.2833333333333333" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/activity_description.xml" value="0.20260416666666667" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/activity_onboarding.xml" value="0.25" />
@@ -26,6 +28,7 @@
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/layout/teste.xml" value="0.1" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27447916666666666" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/menu/bottom_nav_meu.xml" value="0.33" />
+        <entry key="..\:/workspace/Desafio-South/app/src/main/res/mipmap-anydpi-v26/ic_calendar.xml" value="0.21875" />
         <entry key="..\:/workspace/Desafio-South/app/src/main/res/xml/provider_paths.xml" value="0.2713541666666667" />
       </map>
     </option>

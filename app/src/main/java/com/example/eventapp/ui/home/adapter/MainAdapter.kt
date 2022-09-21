@@ -50,8 +50,6 @@ class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
         }
     }
 
-    // TODO Return Image when Blank on API
-
     override fun getItemCount(): Int {
         return events.size
     }
