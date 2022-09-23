@@ -25,6 +25,7 @@ class DescriptionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDescriptionBinding
 
+    // start var Title to Share
     var eventTitle = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +34,10 @@ class DescriptionActivity : AppCompatActivity() {
         binding = ActivityDescriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // got all info from recyclerview
         loadEventFromExtra()
 
+        // hide share button on screenshot
         binding.ivButtonShare.setOnClickListener{
             binding.ivButtonShare.isVisible = false
             shareEvent()
@@ -57,6 +60,7 @@ class DescriptionActivity : AppCompatActivity() {
             eventTitle = it.title
         }
     }
+
 
     fun getDateFullDate(s: String): String? {
         try {

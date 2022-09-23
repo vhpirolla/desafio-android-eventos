@@ -16,10 +16,7 @@ class MainViewModel constructor(private val repository: EventRepository): ViewMo
         fun getAllEvents(){
             val response = repository.getAllEvents()
             response.enqueue(object: Callback<List<EventsModel>> {
-                override fun onResponse(
-                    call: Call<List<EventsModel>>,
-                    response: Response<List<EventsModel>>
-                ) {
+                override fun onResponse(call: Call<List<EventsModel>>, response: Response<List<EventsModel>>) {
                     eventList.postValue(response.body())
                 }
 

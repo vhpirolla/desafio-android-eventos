@@ -61,9 +61,12 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ProgressBar
-        android:id="@+id/progressbar"
+        android:id="@+id/pb_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:indeterminate="true"
+        android:indeterminateTintMode="src_atop"
+        android:indeterminateTint="@color/primary"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_Events"
