@@ -13,6 +13,6 @@
   </item>
   <item android:drawable="@drawable/ic_baseline_share_24"
         android:gravity="center"
-        android:width="18dp"
-        android:height="18dp"/>
+        android:width="16dp"
+        android:height="16dp"/>
 </layer-list>

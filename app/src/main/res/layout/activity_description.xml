@@ -5,7 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <ImageView
         android:id="@+id/ivEventDescriptionImage"
@@ -26,16 +27,19 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_rounded_share"/>
+        android:src="@drawable/ic_rounded_share"
+        android:elevation="8dp"/>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvEventDescriptionText"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="-16dp"
+        android:layout_marginBottom="8dp"
         android:background="#000000"
-        android:layout_marginTop="168dp"
-        app:cardCornerRadius="32dp"
+        android:layout_marginTop="156dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardCornerRadius="16dp"
         tools:ignore="ExtraText">
 
         // TODO REVIEW THIS CONSTRAINT
@@ -57,7 +61,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginTop="8dp"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 tools:text="Título" />
@@ -151,6 +154,7 @@
                 tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sit amet eros ullamcorper, porta odio sed, interdum urna. Nullam commodo mattis metus, at congue sem efficitur nec. Donec dignissim risus a nunc rhoncus rutrum. Maecenas iaculis et nisi ut fermentum. In hac habitasse platea dictumst. In luctus pellentesque aliquam. Suspendisse libero quam, rutrum ut nibh vel, pellentesque efficitur leo. Praesent tristique tortor leo, et lobortis velit molestie ut. Integer ultrices dignissim ipsum, id interdum nisi mattis ultrices."/>
 
             <Button
+                android:id="@+id/btnBuy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="@id/ivEventDescriptionCalendar"

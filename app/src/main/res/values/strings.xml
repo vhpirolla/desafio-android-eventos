@@ -7,4 +7,7 @@
     <string name="about">About</string>
     <string name="local_icon">Local Icon</string>
     <string name="clock_icon">Clock Icon</string>
+    <string name="eventapp">EVENTAPP</string>
+    <string name="eventapp_logo">Eventapp Logo - A rounded purple circle with a calendar inside</string>
+    <string name="account_icon">Account Icon</string>
 </resources>

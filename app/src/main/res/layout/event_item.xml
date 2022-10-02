@@ -26,7 +26,7 @@
             android:src="@mipmap/placeholder"/>
 
         <LinearLayout
-            android:layout_width="70dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +34,9 @@
             android:id="@+id/container"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:background="@mipmap/ic_date_background">
+            android:background="@mipmap/ic_date_background"
+            android:padding="16dp"
+            android:elevation="8dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/lbEventDay"
@@ -43,7 +45,6 @@
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20sp"
-            android:layout_marginTop="16dp"
             tools:text="16" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -52,9 +53,9 @@
                 android:layout_height="match_parent"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                android:layout_marginBottom="16dp"
+                android:textSize="12sp"
                 android:maxLength="3"
+                android:textAllCaps="true"
                 tools:text="Dez" />
         </LinearLayout>
 
@@ -64,7 +65,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/ly_Constraint"
             app:layout_constraintTop_toBottomOf="@id/ivEventImage"

@@ -14,7 +14,7 @@ import com.example.eventapp.R
 import com.example.eventapp.data.remote.EventRepository
 import com.example.eventapp.data.remote.MyViewModelFactory
 import com.example.eventapp.databinding.ActivityMainBinding
-import com.example.eventapp.retrofit.RetrofitService
+import com.example.eventapp.retrofit.EventsService
 import com.example.eventapp.ui.home.adapter.MainAdapter
 import com.example.eventapp.ui.onboarding.OnboardingActivity
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel: MainViewModel
-    private val retrofitService = RetrofitService.getInstance()
+    private val retrofitService = EventsService.getInstance()
 
     val adapter = MainAdapter()
 

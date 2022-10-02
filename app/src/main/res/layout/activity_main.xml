@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,10 +19,12 @@
             android:id="@+id/ivLogo"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:elevation="8dp"
             android:src="@mipmap/ic_calendar_round"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            android:contentDescription="@string/eventapp_logo"/>
 
     <TextView
         android:id="@+id/lbLogo"
@@ -32,7 +35,7 @@
         app:layout_constraintStart_toEndOf="@id/ivLogo"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/baloo_chettan"
-        android:text="EVENTAPP"
+        android:text="@string/eventapp"
         android:textAlignment="center"
         android:textSize="32sp" />
 
@@ -45,7 +48,9 @@
             app:layout_constraintBottom_toTopOf="@id/lbName"
             app:layout_constraintStart_toStartOf="@id/lbName"
             app:layout_constraintEnd_toEndOf="@id/lbName"
-            android:layout_marginBottom="4dp"/>
+            android:layout_marginBottom="4dp"
+            android:elevation="8dp"
+            android:contentDescription="@string/account_icon"/>
 
         <TextView
             android:id="@+id/lbName"

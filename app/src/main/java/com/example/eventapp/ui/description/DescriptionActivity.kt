@@ -5,11 +5,15 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.eventapp.R
 import com.example.eventapp.data.remote.EventsModel
+import com.example.eventapp.data.remote.UserModel
 import com.example.eventapp.databinding.ActivityDescriptionBinding
 import com.example.eventapp.ui.home.adapter.getAddress
 import java.io.File
@@ -19,13 +23,14 @@ import java.util.*
 
 class DescriptionActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityDescriptionBinding
+    lateinit var viewModel: DescriptionViewModel
+
     object Extras {
         const val EVENT = "EXTRA_EVENT"
     }
 
-    private lateinit var binding: ActivityDescriptionBinding
-
-    // start var Title to Share
+    // start var eventTitle to Share
     var eventTitle = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +38,8 @@ class DescriptionActivity : AppCompatActivity() {
         setContentView(R.layout.activity_description)
         binding = ActivityDescriptionBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        viewModel = ViewModelProvider(this).get(DescriptionViewModel::class.java) // Ver se Funciona
 
         // got all info from recyclerview
         loadEventFromExtra()
@@ -43,7 +50,6 @@ class DescriptionActivity : AppCompatActivity() {
             shareEvent()
             binding.ivButtonShare.isVisible = true
         }
-
     }
 
     private fun loadEventFromExtra() {
@@ -58,8 +64,28 @@ class DescriptionActivity : AppCompatActivity() {
             binding.lbEventDescriptionDate.text = getDateFullDate(it.date)
             binding.lbEventDescriptionPrice.text = "R$ " + it.price
             eventTitle = it.title
+
+            // start var user, email and eventid to Checkin
+            var eventId = it.id
+
+            val sharedPreferences = getSharedPreferences("userPreferences", MODE_PRIVATE)
+            val name = sharedPreferences.getString("user_Name", null).toString()
+            val email = sharedPreferences.getString("user_Email", null).toString()
+            val userId = null
+            var userData = UserModel(eventId, name, email, userId)
+
+            binding.btnBuy.setOnClickListener {
+                viewModel.checkUser(userData) {
+                    if (it?.userId != null) {
+                        // it = newly added user parsed as response
+                        // it?.id = newly added user ID
+                    } else {
+                        Toast.makeText(this, "Checkin Error", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
-    }
+        }
 
 
     fun getDateFullDate(s: String): String? {
@@ -96,6 +122,8 @@ class DescriptionActivity : AppCompatActivity() {
     }
 
     // TODO Get all activity area
+
+    // TODO FINISH POST
 
 
 }

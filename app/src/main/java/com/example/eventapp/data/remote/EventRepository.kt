@@ -1,9 +1,9 @@
 package com.example.eventapp.data.remote
 
-import com.example.eventapp.retrofit.RetrofitService
+import com.example.eventapp.retrofit.EventsService
 
-class EventRepository constructor(private val retrofitService: RetrofitService) {
+class EventRepository constructor(private val eventsService: EventsService) {
 
-    fun getAllEvents() = retrofitService.getAllEvents()
+    fun getAllEvents() = eventsService.getAllEvents()
 
 }

@@ -6,22 +6,22 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface RetrofitService {
+interface EventsService {
     @GET("events")
     fun getAllEvents(): Call<List<EventsModel>>
 
     companion object {
-        var retrofitService: RetrofitService? = null
+        var eventsService: EventsService? = null
 
-        fun getInstance(): RetrofitService {
-            if (retrofitService == null) {
+        fun getInstance(): EventsService {
+            if (eventsService == null) {
                 val retrofit = Retrofit.Builder()
                     .baseUrl("https://5f5a8f24d44d640016169133.mockapi.io/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                retrofitService = retrofit.create(RetrofitService::class.java)
+                eventsService = retrofit.create(EventsService::class.java)
             }
-            return retrofitService!!
+            return eventsService!!
         }
     }
 
