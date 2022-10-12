@@ -5,10 +5,8 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.example.eventapp.R
@@ -24,7 +22,7 @@ import java.util.*
 class DescriptionActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDescriptionBinding
-    lateinit var viewModel: DescriptionViewModel
+    private lateinit var viewModel: DescriptionViewModel
 
     object Extras {
         const val EVENT = "EXTRA_EVENT"
@@ -45,7 +43,7 @@ class DescriptionActivity : AppCompatActivity() {
         loadEventFromExtra()
 
         // hide share button on screenshot
-        binding.ivButtonShare.setOnClickListener{
+        binding.ivButtonShare.setOnClickListener {
             binding.ivButtonShare.isVisible = false
             shareEvent()
             binding.ivButtonShare.isVisible = true
@@ -64,28 +62,18 @@ class DescriptionActivity : AppCompatActivity() {
             binding.lbEventDescriptionDate.text = getDateFullDate(it.date)
             binding.lbEventDescriptionPrice.text = "R$ " + it.price
             eventTitle = it.title
-
-            // start var user, email and eventid to Checkin
-            var eventId = it.id
-
-            val sharedPreferences = getSharedPreferences("userPreferences", MODE_PRIVATE)
-            val name = sharedPreferences.getString("user_Name", null).toString()
-            val email = sharedPreferences.getString("user_Email", null).toString()
-            val userId = null
-            var userData = UserModel(eventId, name, email, userId)
+            val eventId = it.id
 
             binding.btnBuy.setOnClickListener {
-                viewModel.checkUser(userData) {
-                    if (it?.userId != null) {
-                        // it = newly added user parsed as response
-                        // it?.id = newly added user ID
-                    } else {
-                        Toast.makeText(this, "Checkin Error", Toast.LENGTH_SHORT).show()
-                    }
-                }
+                val sharedPreferences =
+                    getSharedPreferences("userPreferences", MODE_PRIVATE)
+                val name = sharedPreferences.getString("user_Name", null).toString()
+                val email = sharedPreferences.getString("user_Email", null).toString()
+                val userData = UserModel(eventId,name,email)
+                viewModel.checkUser(userData)
             }
         }
-        }
+    }
 
 
     fun getDateFullDate(s: String): String? {
@@ -101,29 +89,37 @@ class DescriptionActivity : AppCompatActivity() {
     private fun shareEvent() {
         val sdf = SimpleDateFormat("yyyy-mm-dd_hh:mm:ss")
         val now = sdf.format(Date())
-        val path = getExternalFilesDir(null)!!.absolutePath +"/"+now +".jpg"
-        val bitmap = Bitmap.createBitmap(binding.lyActivityDescription.width, binding.lyActivityDescription.height, Bitmap.Config.ARGB_8888)
-        var canvas = Canvas(bitmap)
+        val path = getExternalFilesDir(null)!!.absolutePath + "/" + now + ".jpg"
+        val bitmap = Bitmap.createBitmap(
+            binding.lyActivityDescription.width,
+            binding.lyActivityDescription.height,
+            Bitmap.Config.ARGB_8888
+        )
+        val canvas = Canvas(bitmap)
         binding.lyActivityDescription.draw(canvas)
-        val imagefile=File(path)
-        val outputStream=FileOutputStream(imagefile)
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream)
+        val imagefile = File(path)
+        val outputStream = FileOutputStream(imagefile)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
         outputStream.flush()
         outputStream.close()
 
-        val URI = FileProvider.getUriForFile(applicationContext, "com.example.eventapp.android.fileprovider", imagefile)
+        val URI = FileProvider.getUriForFile(
+            applicationContext,
+            "com.example.eventapp.android.fileprovider",
+            imagefile
+        )
 
-        val intent= Intent()
-        intent.action= Intent.ACTION_SEND
+        val intent = Intent()
+        intent.action = Intent.ACTION_SEND
         intent.putExtra(Intent.EXTRA_TEXT, eventTitle)
         intent.putExtra(Intent.EXTRA_STREAM, URI)
-        intent.type="text/plain"
+        intent.type = "text/plain"
         startActivity(intent)
     }
+
+}
+
 
     // TODO Get all activity area
 
     // TODO FINISH POST
-
-
-}

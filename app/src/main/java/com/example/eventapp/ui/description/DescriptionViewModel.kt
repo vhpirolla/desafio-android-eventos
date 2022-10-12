@@ -8,18 +8,19 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class DescriptionViewModel: ViewModel() {
-        fun checkUser(userModel: UserModel, onResult: (UserModel?) -> Unit){
-            val retrofit = CheckinService.ServiceBuilder.buildService(CheckinService::class.java)
-            retrofit.postCheckin(userModel).enqueue(
-                object : Callback<UserModel> {
-                    override fun onFailure(call: Call<UserModel>, t: Throwable) {
-                        onResult(null)
-                    }
-                    override fun onResponse( call: Call<UserModel>, response: Response<UserModel>) {
-                        val userResponse = response.body()
-                        onResult(userResponse)
-                    }
+
+    fun checkUser(userData: UserModel) {
+        val retrofit = CheckinService.ServiceBuilder.buildService(CheckinService::class.java)
+        retrofit.postCheckin(userData).enqueue(
+            object : Callback<UserModel> {
+                override fun onFailure(call: Call<UserModel>, t: Throwable) {
+                    val s = ""
                 }
-            )
-        }
+
+                override fun onResponse(call: Call<UserModel>, response: Response<UserModel>) {
+                    val s = ""
+                }
+            }
+        )
     }
+}
